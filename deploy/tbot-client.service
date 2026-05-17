@@ -1,0 +1,17 @@
+[Unit]
+Description=T BOT subscriber client
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=tbot
+WorkingDirectory=/opt/tbot-client
+ExecStart=/opt/tbot-client/venv/bin/python -m tbot_client /opt/tbot-client/config.yaml
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/var/log/tbot-client.log
+StandardError=append:/var/log/tbot-client.log
+
+[Install]
+WantedBy=multi-user.target
