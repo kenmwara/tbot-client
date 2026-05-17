@@ -1,0 +1,6 @@
+requests>=2.31
+PyYAML>=6.0
+# Broker SDKs — install only what you use
+# oandapyV20>=0.7.2     # uncomment for OANDA
+# kalshi-python>=2.0    # uncomment for Kalshi
+# ibapi>=10.19          # uncomment for IBKR (or use ibeam HTTP gateway)
