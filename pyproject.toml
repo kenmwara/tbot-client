@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tbot-client"
+version = "0.1.0"
+description = "Subscriber-side client for the T BOT signal feed"
+requires-python = ">=3.9"
+dependencies = [
+  "requests>=2.31",
+  "PyYAML>=6.0",
+]
+
+[project.scripts]
+tbot-client = "tbot_client.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
