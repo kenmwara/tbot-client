@@ -12,8 +12,8 @@ LOG = logging.getLogger("tbot_client.router")
 
 # Operator's `surface` field -> subscriber config key
 SURFACE_MAP = {
-    "ST":  "kalshi_st",
-    "LT":  "kalshi_lt",
+    "ST":  "exchange_st",
+    "LT":  "exchange_lt",
     "FX":  "forex",
     "STK": "stocks",
 }

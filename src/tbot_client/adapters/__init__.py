@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 
 from .dryrun import DryRunAdapter
-from .kalshi import KalshiAdapter
+from .exchange import ExchangeAdapter
 from .oanda  import OandaAdapter
 from .ibkr   import IbkrAdapter
 
@@ -18,8 +18,8 @@ def get_adapter(surface_key: str, surface_cfg):
 
     broker_type = (surface_cfg.broker or {}).get("type", "").lower()
     try:
-        if broker_type == "kalshi":
-            return KalshiAdapter(surface_cfg)
+        if broker_type == "exchange":
+            return ExchangeAdapter(surface_cfg)
         if broker_type == "oanda":
             return OandaAdapter(surface_cfg)
         if broker_type == "ibkr":

@@ -15,28 +15,28 @@ runtime:
 
 surfaces:
 
-  # ── Kalshi (short-term parlays + singles) ────────────────────────────
-  kalshi_st:
+  # ── Exchange: short-term signals (ST) ────────────────────────────────
+  exchange_st:
     enabled: false
     bankroll: 500.0                 # your USD allocation for this surface
     max_concurrent: 8               # local cap (cannot exceed operator's cap of 8)
     dry_run: false                  # per-surface override of runtime.dry_run
     broker:
-      type: "kalshi"
-      api_email: "you@example.com"
-      api_password: "REPLACE_ME"
-      production: false             # false = Kalshi demo environment
+      type: "exchange"
+      api_key: "REPLACE_ME"
+      api_secret: "REPLACE_ME"
+      production: false             # false = the exchange's sandbox
 
-  # ── Kalshi (long-term political/macro) ───────────────────────────────
-  kalshi_lt:
+  # ── Exchange: long-term signals (LT) ─────────────────────────────────
+  exchange_lt:
     enabled: false
     bankroll: 200.0
     max_concurrent: 30
     dry_run: false
     broker:
-      type: "kalshi"                # same broker as kalshi_st; uses same creds typically
-      api_email: "you@example.com"
-      api_password: "REPLACE_ME"
+      type: "exchange"              # same exchange as exchange_st; usually the same key
+      api_key: "REPLACE_ME"
+      api_secret: "REPLACE_ME"
       production: false
 
   # ── OANDA forex ──────────────────────────────────────────────────────
@@ -66,7 +66,7 @@ surfaces:
 # Optional: per-surface size-multiplier overrides. Default = 1.0 (verbatim).
 # Set <1.0 to take smaller positions than the signal recommends.
 size_multipliers:
-  kalshi_st: 1.0
-  kalshi_lt: 1.0
+  exchange_st: 1.0
+  exchange_lt: 1.0
   forex:     1.0
   stocks:    1.0

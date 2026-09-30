@@ -11,7 +11,7 @@ T BOT operator never touches your funds, never sees your broker credentials, and
 1. **Polls** `/api/signals/feed` every 30 seconds using your subscriber token.
 2. For each new signal:
    - Computes your dollar size: `your_bankroll × signal.kelly_size_pct`.
-   - Routes to the appropriate broker adapter (Kalshi / OANDA / IBKR), if you've enabled that surface.
+   - Routes to the appropriate broker adapter (exchange / OANDA / IBKR), if you've enabled that surface.
    - Places the order with the same direction + size as the signal.
    - POSTs an `ack` callback with `accepted` / `filtered` / `stale`.
    - If filled, POSTs `executed` with your fill price + size.
@@ -55,9 +55,9 @@ surfaces:
       api_token: "..."             # your own OANDA token
       practice: true               # start in OANDA practice mode
 
-  kalshi_st:
+  exchange_st:
     enabled: false                 # opt in by setting true
-  kalshi_lt:
+  exchange_lt:
     enabled: false
   stocks:
     enabled: false
