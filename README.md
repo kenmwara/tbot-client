@@ -22,6 +22,12 @@ T BOT operator never touches your funds, never sees your broker credentials, and
    - The signal is past its 600-second TTL.
    - Your bankroll is below the broker's minimum order size.
 
+## Architecture
+
+<img src="images/architecture.png" width="100%" alt="Architecture diagram of tbot-client. On the subscriber's own machine (Python, under systemd or pm2): feed.py polls the operator's signal feed every 30 seconds with the subscriber's token; router.py skips a signal if its surface is off, the position cap is reached, it is older than 600 seconds or the bankroll is below the broker minimum, then sizes it as bankroll times the signal's Kelly percent; dry-run mode logs every decision without placing an order. config.yaml holds the broker credentials and never leaves the machine; broker adapters for the exchange, OANDA, IBKR and dry-run place orders straight on the subscriber's own accounts; ~/.tbot/ keeps the decision log and state. Only acks, fills and results go back to the operator at ops.tbot.trade, never keys.">
+
+---
+
 ## Install
 
 ```bash
