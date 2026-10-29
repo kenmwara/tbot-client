@@ -6,6 +6,8 @@ T BOT operator never touches your funds, never sees your broker credentials, and
 
 ---
 
+<img src="images/flow.png" width="100%" alt="Flow diagram in five steps. 1: Poll the signal feed; Every 30 seconds, with the subscriber's own token. 2: Apply the skip rules; Surface off, position cap reached, older than 600 s, below broker minimum. 3: Size the order; Subscriber's bankroll × the signal's Kelly %. 4: Trade on their own broker; Exchange, OANDA or IBKR adapter; dry run first logs without ordering. 5: Report back; Ack, executed and resolved callbacks: fills only, never keys. Guards: Custody, credentials never leave the subscriber's machine; Safety, stale or oversized signals are skipped; Onboarding, dry run logs everything, places nothing.">
+
 ## What it does
 
 1. **Polls** `/api/signals/feed` every 30 seconds using your subscriber token.
