@@ -6,7 +6,7 @@ T BOT operator never touches your funds, never sees your broker credentials, and
 
 ---
 
-<img src="images/flow.png" width="100%" alt="Flow diagram in five steps. 1: Poll the signal feed; Every 30 seconds, with the subscriber's own token. 2: Apply the skip rules; Surface off, position cap reached, older than 600 s, below broker minimum. 3: Size the order; Subscriber's bankroll × the signal's Kelly %. 4: Trade on their own broker; Exchange, OANDA or IBKR adapter; dry run first logs without ordering. 5: Report back; Ack, executed and resolved callbacks: fills only, never keys. Guards: Custody, credentials never leave the subscriber's machine; Safety, stale or oversized signals are skipped; Onboarding, dry run logs everything, places nothing.">
+<img src="images/flow.png" width="100%" alt="How it works, in five steps. 1. Check for trade ideas: Every 30 seconds, using the subscriber's own pass. 2. Skip the unsafe ones: Too old (over 10 minutes), too big, or below the broker's minimum. 3. Size the trade: A set share of the subscriber's own money. 4. Trade on their own account: With their own broker; a practice mode logs everything without trading. 5. Report back: Only what happened is sent back, never passwords or keys. Safeguards: Your keys: Login details never leave the subscriber's computer; Safety: Old or oversized trades are skipped; Try it first: Practice mode places nothing.">
 
 ## What it does
 
