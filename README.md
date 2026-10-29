@@ -82,6 +82,10 @@ Set `dry_run: true` at any surface level (or globally under `runtime:`) to log s
 
 ## Failure modes
 
+<img src="images/client-failures.png" width="100%" alt="Five problems a subscriber can hit, and what to do. What you see: The trade-idea feed refuses the login (HTTP 401). Likely cause: The operator switched off this subscriber's pass. What to do: Email the operator. What you see: The broker refuses the login (HTTP 401). Likely cause: The broker's login has expired. What to do: Renew it on the broker's site, then update the settings file. What you see: Trade ideas keep coming back as 'stale'. Likely cause: The computer's clock is off, or the network is slow. What to do: Check the clock (date -u), and check for new ideas more often. What you see: 'insufficient_funds'. Likely cause: Less money in that account than the broker's minimum trade. What to do: Top up that broker account. What you see: Ideas arrive but nothing trades. Likely cause: Practice mode is on somewhere, or that market is switched off. What to do: Check the settings file.">
+
+<details><summary>The same, as a table</summary>
+
 | Symptom | Likely cause | What to do |
 |---|---|---|
 | HTTP 401 from feed | Token revoked by operator | Email operator |
@@ -89,6 +93,8 @@ Set `dry_run: true` at any surface level (or globally under `runtime:`) to log s
 | `"reason": "stale"` ack repeatedly | Client clock out of sync OR network slow | Check `date -u`; reduce poll interval |
 | `"reason": "insufficient_funds"` | Surface bankroll < broker minimum | Top up that broker account |
 | Signals received but never executed | `dry_run: true` somewhere, or surface disabled | Check config |
+
+</details>
 
 ## License
 
